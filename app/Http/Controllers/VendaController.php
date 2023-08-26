@@ -207,7 +207,7 @@ $disponiveis = array_values($disponiveis);
         ]);
 
         if($venda->pagamento == null){
-            $url = 'https://api.pagseguro.com/orders'; // Substitua pela URL da API completa
+            $url = 'https://secure.api.pagseguro.com/orders'; // Substitua pela URL da API completa
 
             $headers = [
                 'Authorization' => 'Bearer ' . $token,
@@ -283,7 +283,7 @@ $disponiveis = array_values($disponiveis);
                 return response()->json(['error' => $e->getMessage()], 500);
             }
         }else{
-            $url = 'https://api.pagseguro.com/orders/'.$venda->pagamento; // Substitua pela URL da API completa
+            $url = 'https://secure.api.pagseguro.com/orders/'.$venda->pagamento; // Substitua pela URL da API completa
 
             $headers = [
                 'Authorization' => 'Bearer ' . $token,
