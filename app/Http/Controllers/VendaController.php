@@ -201,13 +201,11 @@ $disponiveis = array_values($disponiveis);
 
         $venda = Venda::findOrFail($id);
 
-        $token = 'F73626CBB64442CA9C3DE88977313DF1';
-        $guzzleClient = new \GuzzleHttp\Client([
-            'verify' => false
-        ]);
+        $token = 'cfc58a8f-e17f-43b9-aca7-037d65ab419d8995d04f400dad6730485c2e23f588a5eeb8-8e8b-49e6-acb4-800f3e65080e';
+       
 
         if($venda->pagamento == null){
-            $url = 'https://sandbox.api.pagseguro.com/orders'; // Substitua pela URL da API completa
+            $url = 'https://api.pagseguro.com/orders'; // Substitua pela URL da API completa
 
             $headers = [
                 'Authorization' => 'Bearer ' . $token,
@@ -283,7 +281,7 @@ $disponiveis = array_values($disponiveis);
                 return response()->json(['error' => $e->getMessage()], 500);
             }
         }else{
-            $url = 'https://sandbox.api.pagseguro.com/orders/'.$venda->pagamento; // Substitua pela URL da API completa
+            $url = 'https://api.pagseguro.com/orders/'.$venda->pagamento; // Substitua pela URL da API completa
 
             $headers = [
                 'Authorization' => 'Bearer ' . $token,
