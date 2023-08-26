@@ -1,0 +1,1 @@
+<?php print_r($pag)  ?><?php /**PATH C:\projetos\laravel\sorteio\resources\views/venda/teste.blade.php ENDPATH**/ ?>
