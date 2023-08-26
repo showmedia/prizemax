@@ -221,7 +221,7 @@
 
 
 
-        <a href="https://chat.whatsapp.com/HRPcFSt6XfAHdSMN2u5A2v" target="_blanck" class="btn btn-success btn-whats"> <ion-icon name="logo-whatsapp"></ion-icon>
+        <a href="https://chat.whatsapp.com/IcCriYXS2raDuxBx7hoLX8" target="_blanck" class="btn btn-success btn-whats"> <ion-icon name="logo-whatsapp"></ion-icon>
 
  Grupo </a>
 
