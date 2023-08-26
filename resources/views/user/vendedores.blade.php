@@ -129,50 +129,6 @@
     </div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="sacar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Solicitar Saque</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <form action="/saque" method="post">
-        @csrf
-      <div class="modal-body">
-        
-      <div class="mb-3">
-      <label for="tipo" class="form-label">Tipo de Chave</label>
-
-      <select class="form-select" id="tipo" name="tipo" aria-label="Default select example">
-        <option selected>Telefone</option>
-        <option value="1">Email</option>
-        <option value="2">CPF</option>
-        </select>
-      </div>
-        
-        <div class="mb-3">
-            <label for="chave" class="form-label">Chave Pix</label>
-            <input type="text" name="chave" class="form-control" id="chave" required='required'>
-        </div>
-        <label for="valorpix" class="form-label">Valor Saque</label>
-        <div class="input-group mb-3">
-           <input type="hidden" id="saldoconta" value="{{Auth::user()->conta->saldo}}">
-            <span class="input-group-text" id="basic-addon1">R$</span>
-            <input type="text" value="{{floor(Auth::user()->conta->saldo)}}" class="form-control" data-mask-reverse="true" id="valorpix" name="valorpix" aria-describedby="basic-addon1">
-            <span class="input-group-text" id="basic-addon1">,00</span>
-        </div>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" onclick="this.form.submit(); this.disabled=true; this.innerHTML='Solicitando...'" class="btn btn-primary">Solicitar</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
 
   
 </div>
