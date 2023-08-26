@@ -24,7 +24,7 @@ class SorteiarController extends Controller
 
     public function pesquisar(Request $request){
 
-        $sorteio = Sorteio::findOrFail(11);
+        $sorteio = Sorteio::findOrFail(1);
 
         $vencedor = null;
 
@@ -46,12 +46,8 @@ class SorteiarController extends Controller
 
                     $venda = $cota->venda;
 
-                    if($venda->user->id == 108 || $venda->user->id == 1){
-                        
-                        $notas = Nota::whereDate(
-                            'created_at', '>', '2023-05-10'
-                        )->get();
-
+                    if($venda->user->id == 1){
+                    
                         foreach($notas as $nota){
 
                             foreach($nota->numeros as $numero){
@@ -93,7 +89,7 @@ class SorteiarController extends Controller
 
 
 
-            if($user->id != 108 && $user->id != 1){
+            if($user->id != 1){
 
                 $cont = 0;
 
@@ -119,7 +115,7 @@ class SorteiarController extends Controller
 
         foreach($users as $user){
 
-            if($user->id != 108 && $user->id != 1 && $user->name != $primeiro){
+            if($user->id != 1 && $user->name != $primeiro){
 
                 $cont = 0;
 
@@ -143,7 +139,7 @@ class SorteiarController extends Controller
 
         foreach($users as $user){
 
-            if($user->id != 108 && $user->id != 1 && $user->name != $primeiro && $user->name != $segundo){
+            if($user->id != 1 && $user->name != $primeiro && $user->name != $segundo){
 
                 $cont = 0;
 
