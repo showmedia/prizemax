@@ -56,7 +56,7 @@
 
         <!-- qrcode -->
 
-        <img class="img-qrcode" src="{{ $pag['qr_codes'][0]['links'][0]['href'] ?? ''}}"> 
+        <img class="img-qrcode" src="data:image/png;base64,{{$pag->point_of_interaction->transaction_data->qr_code_base64 ?? ''}}"> 
 
 
 
@@ -74,7 +74,7 @@
 
         <div class="input" style="width: 100%;">
 
-            <textarea id="qr_code_text" style="height:150px; width:100%; word-wrap: break-word; white-space: pre-wrap;">{{ $pag['qr_codes'][0]['text'] }}</textarea>
+            <textarea id="qr_code_text" style="height:150px; width:100%; word-wrap: break-word; white-space: pre-wrap;">{{$pag->point_of_interaction->transaction_data->qr_code ?? ''}}</textarea>
 
         </div>
 
@@ -156,8 +156,13 @@
 
 
 
+                                            @if($venda->sorteio->tipo == 0)
                                             <p><b>Cotas: </b> @foreach($venda->cotas as $cota) {{sprintf("%03s",$cota->number)}},   @endforeach </p>
 
+                                            @else 
+                                            <p><b>Cotas: </b> @foreach($venda->cotas as $cota) {{sprintf("%04s",$cota->number)}},   @endforeach </p>
+
+                                            @endif
                                         </div>
 
                                     </div>

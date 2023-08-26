@@ -199,109 +199,85 @@ $disponiveis = array_values($disponiveis);
 
     public function showVenda($id){
 
-        $venda = Venda::findOrFail($id);
-
-        $token = 'F73626CBB64442CA9C3DE88977313DF1';
-        $guzzleClient = new \GuzzleHttp\Client([
+            $venda = Venda::findOrFail($id);
+            $payment = 0;
+    
+    
+            if($venda->pagamento == null){
+                /**integração pix */
+    
+            // Se você já informou o seu client_id e client_secret no .env, não é necessário informar nesta requisição.
+    
+            SDK::setAccessToken("APP_USR-873875661767327-082612-45930de50c1522e0d8b5916b5874e3a9-139907967");
+    
+            $payment = new MercadoPago\Payment();
+    
+            $payment->transaction_amount = $venda->valueAll;
+    
+            $payment->description = $venda->sorteio->name;
+    
+            $payment->payment_method_id = "pix";
+    
+            $payment->notification_url = 'https://prizemax.com.br/api/stores?source_news=webhooks';
+    
+            $payment->payer = array(
+    
+                "email" => $venda->user->email,
+    
+                "first_name" => $venda->user->name,
+    
+                "last_name" => $venda->user->name,
+    
+                "identification" => array(
+    
+                    "type" => "CPF",
+    
+                    "number" => "40306121808"
+    
+                 ),
+    
+                "address"=>  array(
+    
+                    "zip_code" => "06233200",
+    
+                    "street_name" => "Av. das Nações Unidas",
+    
+                    "street_number" => "3003",
+    
+                    "neighborhood" => "Bonfim",
+    
+                    "city" => "Osasco",
+    
+                    "federal_unit" => "SP"
+    
+                 )
+    
+              );
+    
+           
+    
+               $payment->save();
+    
           
-        ]);
-
-        if($venda->pagamento == null){
-            $url = 'https://sandbox.api.pagseguro.com/orders'; // Substitua pela URL da API completa
-
-            $headers = [
-                'Authorization' => 'Bearer ' . $token,
-                'Content-Type' => 'application/json',
-            ];
     
-            $agora = new \DateTime();  // Obtém a data e hora atual
-    $agora->modify('+24 hours');  // Adiciona 24 horas
+               $venda->pagamento = $payment->id;
     
-    $dataHoraFutura = $agora->format('Y-m-d\TH:i:sP');
+               $venda->update();
     
-            $body = json_encode([
-                'reference_id' => 'ex-00001',
-                'customer' => [
-                    'name' => ''.$venda->user->name,
-                    'email' => ''.$venda->user->email,
-                    'tax_id' => '12345678909',
-                    'phones' => [
-                        [
-                            'country' => '55',
-                            'area' => '11',
-                            'number' => '999999999',
-                            'type' => 'MOBILE'
-                        ]
-                    ]
-                ],
-                'items' => [
-                    [
-                        'name' => 'Cotas sorteio '.$venda->sorteio->name,
-                        'quantity' => $venda->quantidade,
-                        'unit_amount' => $venda->sorteio->valorCota *100
-                    ]
-                ],
-                'qr_codes' => [
-                    [
-                        'amount' => [
-                            'value' => $venda->valueAll*100
-                        ],
-                        'expiration_date' => ''.$dataHoraFutura
-                    ]
-                ],
-                'shipping' => [
-                    'address' => [
-                        'street' => 'Avenida Brigadeiro Faria Lima',
-                        'number' => '1384',
-                        'complement' => 'apto 12',
-                        'locality' => 'Pinheiros',
-                        'city' => 'São Paulo',
-                        'region_code' => 'SP',
-                        'country' => 'BRA',
-                        'postal_code' => '01452002'
-                    ]
-                ],
-                'notification_urls' => [
-                    'https://sortemaxrifaonline.com.br/notificacoes'
-                ]
-            ]);
     
-            try {
-                $response = $guzzleClient->post($url, [
-                    'headers' => $headers,
-                    'body' => $body,
-                ]);
     
-                $responseData = json_decode($response->getBody(), true);
+                
+            }else{
     
-                // Faça algo com os dados de resposta, se necessário
-                $venda->pagamento = $responseData['id'];
-                $venda->update();
-              
-                return view('finalizar',['venda' => $venda, 'pag' => $responseData]);
-            } catch (\Exception $e) {
-                return response()->json(['error' => $e->getMessage()], 500);
+                SDK::setAccessToken("APP_USR-873875661767327-082612-45930de50c1522e0d8b5916b5874e3a9-139907967");
+    
+                $payment = MercadoPago\Payment::find_by_id($venda->pagamento);
+                
+    
             }
-        }else{
-            $url = 'https://sandbox.api.pagseguro.com/orders/'.$venda->pagamento; // Substitua pela URL da API completa
-
-            $headers = [
-                'Authorization' => 'Bearer ' . $token,
-                'Content-Type' => 'application/json',
-            ];
     
-            try {
-                $response = $guzzleClient->get($url, [
-                    'headers' => $headers,
-                ]);
+            return view('finalizar',['venda' => $venda, 'pag' => $payment]);
     
-                $responseData = json_decode($response->getBody(), true);
-              
-                return view('finalizar',['venda' => $venda, 'pag' => $responseData]);
-            } catch (\Exception $e) {
-                return response()->json(['error' => $e->getMessage()], 500);
-            }
-        }
         
     }
 
