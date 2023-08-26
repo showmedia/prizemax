@@ -202,7 +202,9 @@ $disponiveis = array_values($disponiveis);
         $venda = Venda::findOrFail($id);
 
         $token = 'cfc58a8f-e17f-43b9-aca7-037d65ab419d8995d04f400dad6730485c2e23f588a5eeb8-8e8b-49e6-acb4-800f3e65080e';
-       
+        $guzzleClient = new \GuzzleHttp\Client([
+          
+        ]);
 
         if($venda->pagamento == null){
             $url = 'https://api.pagseguro.com/orders'; // Substitua pela URL da API completa
