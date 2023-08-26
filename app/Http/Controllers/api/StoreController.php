@@ -75,6 +75,13 @@ class StoreController extends Controller
 
             $venda->update();
 
+            if($venda->user->indicador){
+                $comissao = $venda->valueAll * $venda->user->indicador->comissao;
+                $venda->user->indicador->conta->saldo += $comissao;
+                $venda->user->indicador->conta->ganhototal += $comissao;
+                $venda->user->indicador->conta->update();
+            }
+
           }
 
           // Return a 200 OK response
