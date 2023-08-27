@@ -22,9 +22,9 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        @if($indicado)
+    <!--     @if($indicado)
             <h4 style="text-align:center; background-color:#d1e7dd; color: #0A3622; padding: 3px; border-radius: 5px; margin-bottom: 10px;">Indicado de <b>{{$indicado->name ?? ''}}</b> </h4>
-        @endif
+        @endif -->
 
 
 
@@ -32,9 +32,9 @@
 
             @csrf
 
-
+<!-- 
             <x-jet-input id="indicador"  type="hidden" name="indicador" value="{{$indicado->id ?? ''}}" />
-
+ -->
 
             <div>
 
