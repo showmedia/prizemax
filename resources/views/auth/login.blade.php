@@ -80,16 +80,16 @@
 
                 @if (Route::has('password.request'))
 
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="/register">
 
-                        {{ __('Esqueceu sua senha?') }}
+                        {{ __('Registre-se') }}
 
                     </a>
 
                 @endif
 
 
-
+              
                 <x-jet-button class="ml-4">
 
                     {{ __('Entrar') }}
