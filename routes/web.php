@@ -157,13 +157,8 @@ Route::get('/termos', function(){
 });
 
 Route::get('/register', function(){
-    if(request('indicado')){
-        $indicado = User::findOrFail(request('indicado'));
-    }else{
-        $indicado = null;
-    }
-    
-    return view('auth.register', ['indicado' => $indicado]);
+   
+    return view('auth.register');
 });
 
 
