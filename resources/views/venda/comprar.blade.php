@@ -2,7 +2,7 @@
 
 
 
-@section('title', 'Galdino & Filho Premiações')
+@section('title', 'PrizeMax')
 
 
 

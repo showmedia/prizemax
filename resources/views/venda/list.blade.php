@@ -2,7 +2,7 @@
 
 
 
-@section('title', 'dashboard - Galdino & Filho Premiações')
+@section('title', 'dashboard - PrizeMax')
 
 
 

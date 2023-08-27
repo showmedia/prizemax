@@ -4,7 +4,7 @@
 
 
 
-@section('title', 'Parceiros - Galdino & Filho Premiações')
+@section('title', 'Parceiros - PrizeMax')
 
 
 
