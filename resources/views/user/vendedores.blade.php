@@ -106,15 +106,15 @@
           
             <div class="iten">
                 Ganho Total <br>
-                R$ {{ number_format($indicado->conta->sum('ganhototal'), 2, ',', '.') }}
+                R$ {{ number_format($indicado->conta->ganhototal, 2, ',', '.') }}
             </div>
             <div class="iten">
                 Ganho Pago <br>
-                R$ {{ number_format($indicado->conta->sum('ganhopago'), 2, ',', '.') }}
+                R$ {{ number_format($indicado->conta->ganhopago, 2, ',', '.') }}
             </div>
             <div class="iten">
                 Saldo a Pagar <br>
-                R$ {{ number_format($indicado->conta->sum('saldo'),2,',','.') }}
+                R$ {{ number_format($indicado->conta->saldo,2,',','.') }}
             </div>
             <div class="iten">
                 Saque solicitado <br>
