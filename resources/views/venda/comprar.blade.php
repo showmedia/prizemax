@@ -42,11 +42,8 @@
 
                             @foreach($venda->cotas as $cota)
 
-                            @if($venda->sorteio->qtncotas < 1001)
-                                <div class="ct">{{sprintf("%03s",$cota->number)}}</div>
-                            @else 
                                 <div class="ct">{{sprintf("%04s",$cota->number)}}</div>
-                            @endif
+                           
 
                             @endforeach
 
