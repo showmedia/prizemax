@@ -89,7 +89,7 @@
 
                                    @foreach($compra->cotas as $cota)
 
-                                   @if($venda->sorteio->qtncotas < 1001)
+                                   @if($compra->sorteio->qtncotas < 1001)
 
                                    @if($cota->number == $compra->sorteio->sorteado)
 
