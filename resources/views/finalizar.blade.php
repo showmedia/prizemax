@@ -156,7 +156,7 @@
 
 
 
-                                            @if($venda->sorteio->tipo == 0)
+                                            @if($venda->sorteio->qtncotas < 1001)
                                             <p><b>Cotas: </b> @foreach($venda->cotas as $cota) {{sprintf("%03s",$cota->number)}},   @endforeach </p>
 
                                             @else 
