@@ -70,13 +70,11 @@
 
     <div class="links-social">
 
-        <a href="https://wa.me/5511916853771"><ion-icon class="whatsapp btn2" name="logo-whatsapp"></ion-icon></a>
+        <a href="https://wa.me/5511964477746"><ion-icon class="whatsapp btn2" name="logo-whatsapp"></ion-icon></a>
 
-        <a href="https://www.instagram.com/galdinoefilho_premios/"><ion-icon class="instagram btn2" name="logo-instagram"></ion-icon></a>
+        <a href="https://www.instagram.com/prizemax_/"><ion-icon class="instagram btn2" name="logo-instagram"></ion-icon></a>
 
-        <a href="https://www.facebook.com/gefpremiacoes"><ion-icon class="facebook btn2" name="logo-facebook"></ion-icon></a>
-
-        <a href=""><ion-icon class="telegram btn2" name="send"></ion-icon></a>
+       
 
     </div>
 
