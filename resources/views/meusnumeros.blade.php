@@ -89,30 +89,19 @@
 
                                    @foreach($compra->cotas as $cota)
 
-                                   @if($compra->sorteio->qtncotas < 1001)
+                                 
+                                        @if($cota->number == $compra->sorteio->sorteado)
 
-                                  
+                                            <div class="ct premiado">{{sprintf("%04s",$cota->number)}}</div>
 
-                                   @if($cota->number == $compra->sorteio->sorteado)
+                                        @else
 
-                                    <div class="ct premiado">{{sprintf("%04s",$cota->number)}}</div>
+                                                <div class="ct">{{sprintf("%04s",$cota->number)}}</div>
 
-                                   @else
-
-                                        <div class="ct">{{sprintf("%04s",$cota->number)}}</div>
-
-                                    @endif
+                                        @endif
 
 
-                                   @if($cota->number == $compra->sorteio->sorteado)
-
-                                    <div class="ct premiado">{{sprintf("%03s",$cota->number)}}</div>
-
-                                   @else
-
-                                        <div class="ct">{{sprintf("%03s",$cota->number)}}</div>
-
-                                    @endif
+                               
 
                                     @endforeach
 
