@@ -107,7 +107,7 @@
                                         <p id="text-alert"></p>
                         </div>  
                             <div style="max-width: 600px; width:100%; margin:auto;">
-                        <h6 id="clicklink" onclick="cliquelink();" style="cursor:pointer;text-align:center; color: white; font-size: 12px;">Link de indicação: <strong id="linkind">https://prizemax.com.br/register?indicado={{Auth::user()->id}}&pass={{Auth::user()->password}}</strong></h6>
+                        <h6 id="clicklink" onclick="cliquelink();" style="cursor:pointer;text-align:center; color: white; font-size: 12px;">Link de indicação: <strong id="linkind">https://prizemax.com.br/register?indicado={{Auth::user()->id}}&pass=0</strong></h6>
                             </div>
                     @endif
                     </div>
